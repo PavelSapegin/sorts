@@ -14,7 +14,7 @@ def heap(arr, n, root):  # построение кучи, где n - разме�
         heap(arr, n, large)
 
 
-def heap_sort(arr):
+def heapsort(arr):
 
     for root in range(len(arr), -1, -1):  # построение max-heap
         heap(arr, len(arr), root)
@@ -27,7 +27,4 @@ def heap_sort(arr):
 
     return arr
 
-if __name__ == '__main__':
-    arr = [6,5,4,3,2,1]
-    arr = heap_sort(arr)
-    print(arr)
+

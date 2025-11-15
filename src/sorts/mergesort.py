@@ -1,10 +1,10 @@
-def merge_sort(arr):
+def mergesort(arr):
     if len(arr) <= 1:
         return arr
 
     prev = len(arr) // 2
-    left = merge_sort(arr[:prev])
-    right = merge_sort(arr[prev:])
+    left = mergesort(arr[:prev])
+    right = mergesort(arr[prev:])
 
     return merge(left,right)
 
