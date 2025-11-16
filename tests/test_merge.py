@@ -1,5 +1,6 @@
 import pytest
 from sorts import mergesort
+from generate_list_conf import generated_list
 
 @pytest.mark.parametrize(
     ["arr","expected"],
@@ -27,10 +28,11 @@ def test_mergesort(arr,expected):
 def test_edge_cases_mergesort(arr,expected):
     assert mergesort(arr) == expected
 
-def propert_based_mergesort(generated_list):
+def test_property_based_mergesort():
     for _ in range(1000):
-        sorted_arr = mergesort(generated_list)
-        expected = sorted(generated_list)
+        arr = generated_list()
+        sorted_arr = mergesort(arr)
+        expected = sorted(arr)
         
         assert len(sorted_arr) == len(expected)
         assert sorted_arr == expected

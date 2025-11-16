@@ -1,5 +1,6 @@
 import pytest
 from sorts import heapsort
+from generate_list_conf import generated_list
 
 @pytest.mark.parametrize(
     ["arr","expected"],
@@ -29,10 +30,11 @@ def test_edge_cases_heapsort(arr,expected):
     assert heapsort(arr) == expected
 
 
-def propert_based_heapsort(generated_list):
+def test_property_based_heapsort():
     for _ in range(1000):
-        sorted_arr = heapsort(generated_list)
-        expected = sorted(sorted_arr)
+        arr = generated_list()
+        sorted_arr = heapsort(arr)
+        expected = sorted(arr)
 
         assert len(sorted_arr) == len(expected)
         assert sorted_arr == expected
