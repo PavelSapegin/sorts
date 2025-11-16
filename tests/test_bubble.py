@@ -1,7 +1,6 @@
-import random
 import pytest
 from sorts import bubblesort
-
+from generate_list_conf import generated_list
 
 @pytest.mark.parametrize(
     ["arr", "expected"],
@@ -28,17 +27,13 @@ def test__edge_cases_bubblesort(arr, expected):
     assert bubblesort(arr) == expected
 
 
-@pytest.fixture
-def generated_list():
-    n = random.randint(0, 100)
-    arr = [random.randint(-10000, 10000) for _ in range(n)]
-    return arr
 
 
-def property_based_bubblesort(generated_list):
+def test_property_based_bubblesort():
     for _ in range(1000):
-        sorted_arr = bubblesort(generated_list)
-        expected = sorted(sorted_arr)
+        arr = generated_list()
+        sorted_arr = bubblesort(arr)
+        expected = sorted(arr)
 
         assert len(sorted_arr) == len(expected)
         assert sorted_arr == expected

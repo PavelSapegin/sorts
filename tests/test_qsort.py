@@ -1,6 +1,6 @@
 import pytest
 from sorts import qsort
-
+from generate_list_conf import generated_list
 
 @pytest.mark.parametrize(
     ["arr", "expected"],
@@ -35,10 +35,11 @@ def test_edge_cases_qsort(arr, expected):
     assert qsort(arr) == expected
 
 
-def property_based_qsort(generated_list):
+def test_property_based_qsort():
     for _ in range(1000):
-        sorted_arr = qsort(generated_list)
-        expected = sorted(generated_list)
+        arr = generated_list()
+        sorted_arr = qsort(arr)
+        expected = sorted(arr)
 
         assert len(sorted_arr) == len(expected)
         assert sorted_arr == expected
