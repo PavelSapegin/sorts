@@ -5,11 +5,17 @@ on:
         branches:
             - main
             - creation_test
+        paths:
+            - "src/sorts/**"
+            - "tests/**"
 
     pull_request:
         branches:
             - main
             - creation_test
+        paths:
+            - "src/sorts/**"
+            - "tests/**"
 
     workflow_dispatch:
 
